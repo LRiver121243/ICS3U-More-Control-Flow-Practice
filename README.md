@@ -1,124 +1,74 @@
-# Looping Practice 1: Spicy Peppers
+# More Control Flow Practice
 
-## Problem Description
-Ron is cooking chili using an assortment of peppers.
+## Problem 1: Pascal's Triangle
+Pascal's Triangle is a geometric arrangement of numbers where each number is the sum of the two numbers directly above it. The triangle starts with a single number 1 at the top, and each subsequent row is constructed by adding adjacent numbers from the row above.
 
-The spiciness of a pepper is measured in Scolville Heat Units (SHU). Ron’s chili is currently
-not spicy at all, but each time Ron adds a pepper, the total spiciness of the chili increases
-by the SHU value of that pepper.
+Here's how Pascal's Triangle looks:
 
-The SHU values of the peppers available to Ron are shown in the following table:
+```
+            1
+          1   1
+        1   2   1
+      1   3   3   1
+    1   4   6   4   1
+  1   5  10  10   5   1
+1   6  15  20  15   6   1
+```
+As you move down the triangle, each row corresponds to the coefficients of the expanded form of the binomial $(x + y)^n$, where $n$ is the row number starting from 0. The elements in the $n^{th}$ row represent the binomial coefficients for the expansion of $(x + y)^n$, with the first number being the coefficient of $x^n$ and the last number being the coefficient of $y^n$.
 
-Pepper Name | Scolville Heat Units
---|--
-Poblano | 1500
-Mirasol | 6000
-Serrano | 15500
-Cayenne | 40000
-Thai | 75000
-Habanero | 125000
+Pascal's Triangle has various applications in mathematics, including combinatorics, probability, and algebra.
 
-Your job is to determine the total spiciness of Ron’s chili after he has finished adding peppers.
+Write a program, `pascal.py`, that outputs $n$ rows of  Pascal's Triangle.
 
-## Input Specification
-The first line of input will contain a positive integer N, representing the number of peppers Ron adds to his chili. The next N lines will each contain the name of a pepper Ron has
-added. Each pepper name will exactly match a name that appears in the table above. Note that more than one pepper of the same name can be added.
+### Input Specification
+A positive integer $n$ representing the number of rows of Pascal's Triangle to generate.
 
-## Output Specification
-The output will consist of a positive integer T, representing the total spiciness of Ron’s chili.
+### Output Specification
+Output the first $n$ rows of Pascal's Triangle. Each row should be printed on a separate line. For example:
 
 ### Sample Input
 ```
-4
-Poblano
-Cayenne
-Thai
-Poblano
+5
 ```
 
-### Output for Sample Input
+### Sample Output
 ```
-118000
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
 ```
-
-### Explanation of Output for Sample Input
-A Poblano pepper has an SHU value of 1500. A Cayenne pepper has an SHU value of 40000. A Thai pepper has an SHU value of 75000. The total spiciness of Ron’s chili is therefore: $1500 + 40000 + 75000 + 1500 = 118000$.
 
 
 <br><br>
 
-# Looping Practice 2: Fergusonball Ratings
+## Problem 2: Prime Number Checker
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. In other words, a prime number is only divisible by 1 and itself, and it has exactly two distinct positive divisors.
 
-## Problem Description
-Fergusonball players are given a star rating based on the number of points that they score
-and the number of fouls that they commit. Specifically, they are awarded 5 stars for each
-point scored, and 3 stars are taken away for each foul committed. For every player, the
-number of points that they score is greater than the number of fouls that they commit.
-Your job is to determine how many players on a team have a star rating greater than 40.
-You also need to determine if the team is considered a gold team which means that all the
-players have a star rating greater than 40.
+For example, 2, 3, 5, 7, 11, and 13 are prime numbers because they are only divisible by 1 and themselves. On the other hand, numbers like 4, 6, 8, 9, and 12 are not prime because they have divisors other than 1 and themselves (e.g., 4 is divisible by 2).
 
-## Input Specification
-The first line of input consists of a positive integer N representing the total number of players
-on the team. This is followed by a pair of consecutive lines for each player. The first line
-in a pair is the number of points that the player scored. The second line in a pair is the
-number of fouls that the player committed. Both the number of points and the number of
-fouls, are non-negative integers.
+Prime numbers play a fundamental role in number theory and have various applications in mathematics and computer science, such as cryptography, prime factorization, and generating random numbers. They are also used in algorithms for optimization and searching.
 
-## Output Specification
-Output the number of players that have a star rating greater than 40, immediately followed
-by a plus sign if the team is considered a gold team.
+Write a program, `prime.py`, that checks if a given integer $n$ is a prime number or not.
 
-### Sample Input 1
+### Input Specification
+A single integer $n$, where $(1 ≤ n ≤ 10^6)$
+
+### Output Specification
+Output `Prime` if $n$ is a prime number, and `Not Prime` if not.
+
+### Sample Input
 ```
-3
-12
-4
-10
-3
-9
-1
+17
+```
+### Sample Output
+```
+Prime
 ```
 
-### Output for Sample Input 1
-```
-3+
-```
-
-### Explanation of Output for Sample Input 1
-The chart shows the star rating for each player:
-Player | Points | Fouls | Stars
---|--|--|--
-1 | 12 | 4 | 48
-2 | 10 | 3 | 41
-3 | 9 | 1 | 42
-
-For example, the star rating for the first player is
-12×5−4×3 = 48. All three players have a rating
-greater than 40 so the team is considered a gold
-team.
-
-### Sample Input 2
-```
-2
-8
-0
-12
-1
-```
-
-### Output for Sample Input 2
-```
-1
-```
-
-### Explanation of Output for Sample Input 2
-The chart shows the star rating for each player:
-Player | Points | Fouls | Stars
---|--|--|--
-1 | 8 | 0 | 40
-2 | 12 | 1 | 57
-
-Since only one of the two players has a rating
-greater than 40, this team is not considered a gold
-team.
+### More Test Cases
+You can use the following numbers to test your program.
+Prime | Not Prime
+--|--
+2, 13, 157, 1033, 10009, 999983 | 1, 22, 222, 2222, 22222, 222222
